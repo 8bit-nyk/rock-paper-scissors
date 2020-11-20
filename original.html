@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+    </head>
+        <body>
+            <script>
+                function computerPlay(){
+                    let choices =[ "Rock","Paper","Scissors"];
+                    let  index = Math.floor(Math.random() *  3);
+                    console.log(index);
+                    return choices[index];
+                }
+
+                function playRound(playerSelection,computerSelection){
+                    let player = playerSelection.toLowerCase();
+                    let computer = computerSelection.toLowerCase();
+                    let message = "";
+
+                    if (player == computer){message = "It is a Tie";}
+                    else
+                        {
+                            if (player =="paper"){
+                                if(computer == "scissors"){ message = "You lose Scissors beat Paper";}
+                                else if(computer == "rock"){message = "You win Paper beats Rock";}
+                            
+                            }
+                            if (player == "scissors"){
+                                if(computer == "paper"){ message = "You win Scissors beat Paper";}
+                                if(computer == "rock"){message = "You lose Rock beats Scissors";}
+                            }
+                            if (player == "rock"){
+                                if(computer == "paper"){ message = "You lose Paper beats Rock";}
+                                if(computer == "scissors"){message = "You win Rock beats Scissors";}
+                            
+                            }
+                        }
+
+                    
+                    return message;
+                }
+                function game(){
+                    let playerWinCount = 0;
+                    let computerWinCount = 0;
+                    console.log("Lets Play a 5 round game of Rock Paper Scissors");
+                    for(i=0;i<5;i++)
+                        {
+                            console.log("Round "+i);
+                            console.log("Your move bucko!");
+                            let playerSelection = window.prompt("Whats your pick?"," Rock ,Paper or Scissors");
+                            let computerSelection = computerPlay();
+                            let oneRound = playRound(playerSelection,computerSelection); 
+            
+                            console.log("You chose "+ playerSelection );
+                            console.log("I have chosen " + computerSelection)
+                            console.log("For this round :" + oneRound );
+
+                    
+                            if (oneRound[4] == "w"){ playerWinCount++; }
+                            else if (oneRound[4] == "l"){ computerWinCount++; }
+                        }
+                    if (playerWinCount > computerWinCount)
+                        {
+                            console.log("You have won!");
+                            console.log("The score is "+playerWinCount+" to "+computerWinCount);
+                            console.log("Congradulations");
+
+                        }
+                    else if (playerWinCount < computerWinCount)
+                        {
+                            console.log("Ha Ha. You have Lost to the great RC");
+                            console.log("The score is "+computerWinCount+" to "+playerWinCount);
+                            console.log("Better luck next time");
+                        }
+                    else{console.log("lame");}
+
+                }
+
+
+            </script>
+        </body>
+</html>
